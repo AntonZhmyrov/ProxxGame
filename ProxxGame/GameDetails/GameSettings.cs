@@ -2,16 +2,31 @@
 
 namespace ProxxGame.GameDetails;
 
+/// <summary>
+/// The class which represents game settings for the created game
+/// </summary>
 public class GameSettings
 {
     private GameSettings() {}
     
+    /// <summary>
+    /// The number of cells on X axis
+    /// </summary>
     public int XNumberCells { get; private init; }
     
+    /// <summary>
+    /// The number of cells on Y axis
+    /// </summary>
     public int YNumberCells { get; private init; }
     
+    /// <summary>
+    /// The number of black holes in the game
+    /// </summary>
     public int NumberOfBlackHoles { get; private init; }
 
+    /// <summary>
+    /// Returns preset game settings for Easy game mode
+    /// </summary>
     private static GameSettings GetSettingsForEasyMode() =>
         new()
         {
@@ -20,6 +35,9 @@ public class GameSettings
             NumberOfBlackHoles = 10
         };
 
+    /// <summary>
+    /// Returns preset game settings for Medium game mode
+    /// </summary>
     private static GameSettings GetSettingsForMediumMode() =>
         new()
         {
@@ -28,6 +46,9 @@ public class GameSettings
             NumberOfBlackHoles = 40
         };
     
+    /// <summary>
+    /// Returns preset game settings for Hard game mode
+    /// </summary>
     private static GameSettings GetSettingsForHardMode() =>
         new()
         {
@@ -36,7 +57,9 @@ public class GameSettings
             NumberOfBlackHoles = 99
         };
     
-
+    /// <summary>
+    /// A factory method which constructs a game settings object using the chosen game mode by the user
+    /// </summary>
     public static GameSettings GetPredefinedGameSettingsFromMode(GameMode gameMode)
     {
         switch (gameMode)
@@ -55,6 +78,9 @@ public class GameSettings
         }
     }
 
+    /// <summary>
+    /// Creates a custom game settings object with specified by user parameters
+    /// </summary>
     public static GameSettings CreateCustomGameSettings(int xNumberCells, int yNumberCells, int numberOfBlackHoles)
         =>
             new()
