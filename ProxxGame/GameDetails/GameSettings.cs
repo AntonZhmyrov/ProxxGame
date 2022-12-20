@@ -13,7 +13,7 @@ public class GameSettings
     public int NumberOfBlackHoles { get; private init; }
 
     private static GameSettings GetSettingsForEasyMode() =>
-        new GameSettings
+        new()
         {
             XNumberCells = 8,
             YNumberCells = 8,
@@ -21,7 +21,7 @@ public class GameSettings
         };
 
     private static GameSettings GetSettingsForMediumMode() =>
-        new GameSettings
+        new()
         {
             XNumberCells = 16,
             YNumberCells = 16,
@@ -29,7 +29,7 @@ public class GameSettings
         };
     
     private static GameSettings GetSettingsForHardMode() =>
-        new GameSettings
+        new()
         {
             XNumberCells = 24,
             YNumberCells = 24,

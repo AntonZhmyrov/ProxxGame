@@ -45,29 +45,33 @@ while (true)
     }
     
     OpenCellResult result = game.OpenCell(cellPosition);
-    var openedCell = result.Cell;
+    var openedPosition = result.Cell.Position;
 
-    if (openedCell.IsHole)
+    // When the opened cell is a black hole - the output shows which cell was opened and the overall state of the game
+    // with information about all cells, their positions and whether it is a hole or if not - how many adjacent holes
+    // does the cell have
+    if (result.IsBlackHole)
     {
-        Console.WriteLine($"The cell [{openedCell.Position.X},{openedCell.Position.Y}] is a hole! Sorry! " +
+        Console.WriteLine($"The cell [{openedPosition.X},{openedPosition.Y}] is a hole! Sorry! " +
                           "You lose! Please, be careful next time :)");
         
         Console.Write(result.OpenedCellsStatesString);
         break;
     }
     
+    // When all the not hole cells are opened - the user wins the game
     if (result.IsVictory)
     {
-        Console.WriteLine($"You opened the cell with position: [{openedCell.Position.X},{openedCell.Position.Y}]. " +
-                          $"Adjacent Holes: {openedCell.AdjacentHoles}");
+        Console.WriteLine($"You opened the cell with position: [{openedPosition.X},{openedPosition.Y}]. " +
+                          $"Adjacent Holes: {result.Cell.AdjacentHoles}");
         
         Console.WriteLine("CONGRATULATIONS! YOU WIN!");
         Console.Write(result.OpenedCellsStatesString);
         break;
     }
 
-    Console.WriteLine($"You opened the cell with position: [{openedCell.Position.X},{openedCell.Position.Y}]. " +
-                      $"Adjacent Holes: {openedCell.AdjacentHoles}");
+    Console.WriteLine($"You opened the cell with position: [{openedPosition.X},{openedPosition.Y}]. " +
+                      $"Adjacent Holes: {result.Cell.AdjacentHoles}");
     
     Console.Write(result.OpenedCellsStatesString);
     Console.WriteLine("Press enter to continue...");

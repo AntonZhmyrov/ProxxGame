@@ -1,5 +1,8 @@
 ﻿namespace ProxxGame.Models;
 
+/// <summary>
+/// The class which represents a cell position on the game board with X and Y coordinates
+/// </summary>
 public class Position
 {
     public Position(int x, int y)
@@ -12,6 +15,7 @@ public class Position
     
     public int Y { get; }
     
+    // Needed in order to compare Position objects between each other
     public override bool Equals(object? obj)
     {
         //Check for null and compare run-time types.
@@ -24,11 +28,16 @@ public class Position
         return X == position.X && Y == position.Y;
     }
 
-    public override int GetHashCode()
-    {
-        return HashCode.Combine(X, Y);
-    }
-    
+    // Needed in order to compare Position objects between each other
+    public override int GetHashCode() => HashCode.Combine(X, Y);
+
+    /// <summary>
+    /// Tries to parse x and y coordinates of string types into the Position object
+    /// </summary>
+    /// <param name="x">X coordinate</param>
+    /// <param name="y">Y coordinate</param>
+    /// <param name="inputPosition">The parsed Position object</param>
+    /// <returns>Returns true if the parsing was successful - otherwise returns false</returns>
     public static bool TryParse(string? x, string? y, out Position? inputPosition)
     {
         inputPosition = null;
