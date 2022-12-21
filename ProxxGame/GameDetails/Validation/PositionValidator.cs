@@ -13,8 +13,8 @@ public class PositionValidator : IPositionValidator
 
     public bool ValidateRanges(Position? position) =>
         position != null &&
-        position.X > 0 && 
+        position.X >= 0 && 
         position.X < _gameSettings.XNumberCells && 
-        position.Y > 0 &&
+        position.Y >= 0 &&
         position.Y < _gameSettings.YNumberCells;
 }

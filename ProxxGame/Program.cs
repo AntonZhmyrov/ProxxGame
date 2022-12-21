@@ -123,22 +123,22 @@ Position? InputCellPosition()
     // If parse is unsuccessful - the program stops running
     if (!Position.TryParse(x, y, out var inputPosition))
     {
-        Console.WriteLine("Wrong type of input data!" +
+        Console.WriteLine("Wrong type of input data! " +
                           "Please, next time, input the integer values for X and Y cell position");
 
-        return inputPosition;
+        return null;
     }
 
     // The ranges of input position get validated
     // If they are wrong - the program stops running
     if (!positionValidator.ValidateRanges(inputPosition))
     {
-        Console.WriteLine("Wrong ranges of input data!" +
+        Console.WriteLine("Wrong ranges of input data! " +
                           "Please, next time, input the correct ranges for X and Y cell position values" +
                           $"The correct ranges: from 0 to {gameSettings.XNumberCells - 1} for X and " +
                           $"from 0 to {gameSettings.YNumberCells - 1} for Y");
 
-        return inputPosition;
+        return null;
     }
 
     return inputPosition;
